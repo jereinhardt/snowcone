@@ -17,7 +17,7 @@ end
 
 ## Usage
 
-To best utilize snowcone, you will want to create a module in your application to handle api requests. Use `Snowcone` when defining the module, and include your frost api key.
+To best utilize snowcone, you will want to create a module in your application to handle api requests. Use `Snowcone` when defining the module, and include your Frost API key.
 
 ```elixir
 defmodule MyApp.FrostAPI do
@@ -41,7 +41,7 @@ MyApp.FrostAPI.get_work("work_id")
 # ** {:ok, %Frost.Work{...}}
 
 
-# Create a work.  Returs a map with the work id.
+# Create a work.  Returns a map with the work id.
 
 MyApp.FrostAPI.create_work(work_params)
 # ** {:ok, %{work_id: "work_id"}}
