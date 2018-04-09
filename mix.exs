@@ -1,16 +1,20 @@
 defmodule Snowcone.MixProject do
   use Mix.Project
 
+  @project_url "https://github.com/jereinhardt/snowcone"
+
   def project do
     [
       app: :snowcone,
-      version: "0.1.0",
+      version: "0.1.1",
       elixir: "~> 1.6",
       start_permanent: Mix.env() == :prod,
       description: description(),
       deps: deps(),
+      package: package(),
       name: "Snowcone",
-      source_url: "https://github.com/jereinhardt/snowcone"
+      source_url: @project_url,
+      homepage_url: @project_url
     ]
   end
 
@@ -22,8 +26,17 @@ defmodule Snowcone.MixProject do
 
   defp deps do
     [
+      {:ex_doc, "~> 0.14", only: :dev},
       {:httpoison, "~> 1.0"},
       {:poison, "~> 3.1"}
+    ]
+  end
+
+  defp package do
+    [
+      maintainers: ["Josh Reinhardt"],
+      licenses: ["MIT"],
+      links: %{"GitHub" => @project_url}
     ]
   end
 

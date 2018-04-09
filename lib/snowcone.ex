@@ -11,10 +11,7 @@ defmodule Snowcone do
       @frost_url unquote(frost_url)
       @frost_token unquote(frost_token)
 
-      def get_works do 
-        IO.puts(@frost_token)
-        get_works(@frost_token, @frost_url)
-      end
+      def get_works, do: get_works(@frost_token, @frost_url)
       def get_work(work_id), do: get_work(work_id, @frost_token, @frost_url)
       def create_work(work_params) do
         create_work(work_params, @frost_token, @frost_url)

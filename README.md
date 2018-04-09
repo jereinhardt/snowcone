@@ -49,6 +49,6 @@ MyApp.FrostAPI.create_work(work_params)
 
 # Any API request that fails will return a tuple with the error message.
 
-MyApp.FrostAPI.get_work("bad_work_id")
-# ** {:error, "The server encountered an internal error. Please retry the request."}
+MyApp.FrostAPI.get_work("invalid_work_id")
+# ** {:error, "Work not found."}
 ```
