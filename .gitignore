@@ -6,4 +6,4 @@
 erl_crash.dump
 *.ez
 snowcone-*.tar
-
+/config/*.secret.exs

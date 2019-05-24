@@ -10,45 +10,55 @@ by adding `snowcone` to your list of dependencies in `mix.exs`:
 ```elixir
 def deps do
   [
-    {:snowcone, "~> 0.1.1"}
+    {:snowcone, "~> 0.1.2"}
   ]
 end
 ```
 
-## Usage
+## Configuration
 
-To best utilize snowcone, you will want to create a module in your application to handle api requests. Use `Snowcone` when defining the module, and include your Frost API key.
+You'll need to configure your api token and the service url you would like to use.
 
 ```elixir
-defmodule MyApp.FrostAPI do
-  use Snowcone, frost_key: "secret frost api key"
-end
+# config/config.exs
+
+use Mix.Config
+
+config :snowcone,
+  service_url: "https://api.poetnetwork.net",
+  api_token: "your api token"
 ```
 
-You can use this module as your primary wrapper for interacting with the Frost API.  This makes the following methods available:
+## Usage
+
+The `Snowcone` modules allows you to interact Frost enpoints related to works.
+
+- `get_works/0` - retrieves all works related to an account
+- `get_work/1` - retrieves a single work related to an account
+- `create_work/1` - create a work for an account
 
 ```elixir
 
 # Retrieve a list of all available works.
 
-MyApp.FrostAPI.get_works
+Snowcone.get_works
 # ** {:ok, [%Frost.Work{...}]}
 
 
 # Retrieve a work based on its id.
 
-MyApp.FrostAPI.get_work("work_id")
+Snowcone.get_work("work_id")
 # ** {:ok, %Frost.Work{...}}
 
 
 # Create a work.  Returns a map with the work id.
 
-MyApp.FrostAPI.create_work(work_params)
+Snowcone.create_work(work_params)
 # ** {:ok, %{work_id: "work_id"}}
 
 
 # Any API request that fails will return a tuple with the error message.
 
-MyApp.FrostAPI.get_work("invalid_work_id")
+Snowcone.get_work("invalid_work_id")
 # ** {:error, "Work not found."}
 ```
